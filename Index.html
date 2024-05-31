@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)file:///C:/Users/Lenovo/Documents/PROYECTO_PAGINA_WEB/INDEX.html -->
+<html lang="en">
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Mike's Shoe Haven</title>
+   <link rel="stylesheet" href="./Style.css">
+   <style type="text/css" id="operaUserStyle"></style>
+   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<style>
+   nav {
+      background-color: #ff6600;
+      /* Color naranja */
+      padding: 10px;
+   }
+
+   ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+   }
+
+   li {
+      display: inline-block;
+      margin-right: 20px;
+   }
+
+   a {
+      color: #fff;
+      /* Color blanco */
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+   }
+
+   a:hover {
+      background-color: #333;
+      /* Color gris oscuro al pasar el ratón */
+   }
+</style>
+
+<body>
+
+   <div id="app">
+
+      <nav>
+         <ul class="menu-horizontal">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Contactos</a></li>
+            <li class="mauseover">
+               <a href="#">Catergorias</a>
+               <ul class="menu-vertical">
+                  <li><a href="#">Dama</a></li>
+                  <li><a href="#">Caballero</a></li>
+               </ul>
+            </li>
+         </ul>
+
+      </nav>
+
+
+      <!-- <body> -->
+      <header>
+         <div class="icono-fondo">
+            <svg class=" https://th.bing.com/th/id/OIG4.vbAkkgKOSEDm_D_J7_1O?pid=ImgGn">
+
+
+
+            </svg>
+
+
+         </div>
+
+         <div class="container-icon">
+            <div style="display: inline-block; position: relative; float: right">
+
+
+               <svg xmlns="http://www.w3.org/2000/svg" @click="abrirCarrito" style="width: 40px;color: white;"
+                  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" style="width: 500px;" stroke-linejoin="round"
+                     d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z">
+                  </path>
+
+               </svg>
+               <div style="background-color: #000;
+               color: #fff;
+               width: 25px;
+               height: 25px;
+               border-radius: 50%;
+               position: absolute;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               bottom: 0px;
+               right: 0px;">
+
+                  <span id="conatador-productos">{{totalProducto}}</span>
+
+               </div>
+            </div>
+
+            <div class="container-cart-products hidden-cart">
+
+
+            </div>
+            <div class="cart-product">
+               <div class="info-cart-products">
+
+                  <div v-for="producto in Productos">
+                     <span class="cantidad-producto-carrito">{{producto.cantidad}}</span>
+                     <p class="titulo-producto-carrito">{{producto.nombre}}</p>
+                     <span class="precio-producto-carrito">${{producto.precio}}</span>
+
+                     <svg xmlns="http://www.w3.org/2000/svg" @click="eliminarProducto(producto.id)" style="width: 40px;"
+                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close">
+                        <path stroke-linecap="round" style="width: 500px;" stroke-linejoin="round"
+                           d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+
+
+                     </svg>
+                  </div>
+                  <div class="cart-total">
+
+                     <div class="cart-total">
+
+                        <h3>Total:</h3>
+                        <span class="total-pagar">${{TotalPagar}}</span>
+
+                        <button @click="botonComprar">Comprar</button>
+                     </div>
+                  </div>
+
+               </div>
+      </header>
+      <div class="container-items">
+         <div class="row-container">
+            <div class="item">
+               <figure>
+                  <img
+                     src="https://www.flexi.com.mx/medias/415301-brown-lateral.jpg?context=bWFzdGVyfGltYWdlc3wyNTIzODR8aW1hZ2UvanBlZ3xhRFUwTDJneU1TOHhNVFkyTnpRNE1qVXdPVE0wTWk4ME1UVXpNREV0WW5KdmQyNHRiR0YwWlhKaGJDNXFjR2N8ZjY5YmQ0ZTI2NmVjMDRmNGU0ODk3N2NiZjRkYWMzN2FiZmZlY2M2ZDMzMDM2ZDkxMWY0MDA0ZDcyMjQwODZkNA"
+                     alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Sneaker Casual</h2>
+                  <p class="price">$400</p>
+                  <button @click="AgregarCarrito('Sneaker Casual', '400', '1')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img
+                     src="https://www.flexi.com.mx/medias/702901-azul-lateral.jpg?context=bWFzdGVyfGltYWdlc3wyODAxMDd8aW1hZ2UvanBlZ3xhRFprTDJnMk1pOHhNVFE0TkRFd056QTBOamswTWk4M01ESTVNREV0WVhwMWJDMXNZWFJsY21Gc0xtcHdad3w4N2MzZGQ0MGM4Njk4Yjg3ZTYzNzRhM2ZlOTUzM2UzZTExOThiODkxNzM0YTBhM2RkNjc5ODVlNjRjMTRmZmZj"
+                     alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Sneaker Urbano Clásico</h2>
+                  <p class="price">$389</p>
+                  <button @click="AgregarCarrito('Sneaker Urbano Clasico', '389', '2')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/a7eb658f4303432719ffa4ed8bd4bf65-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Tenis Caballero DC BCO</h2>
+                  <p class="price">$359</p>
+                  <button @click="AgregarCarrito('Tenis Caballero DC BCO', '359', '3')">Añadir al carrito</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="row-container">
+            <div class="item">
+
+               <figure>
+                  <img src="./INDEX_files/92113-negro-lateral.avif" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Bota Outdoor Country</h2>
+                  <p class="price">$400</p>
+                  <button @click="AgregarCarrito('Bota Outdoor Country', '400', '4')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img
+                     src="https://www.flexi.com.mx/medias/409701-amarillo-lateral.jpg?context=bWFzdGVyfGltYWdlc3wxNjY4MTJ8aW1hZ2UvanBlZ3xhRE5oTDJneFpTOHhNVFEwTWpVek1ESTROelkwTmk4ME1EazNNREV0WVcxaGNtbHNiRzh0YkdGMFpYSmhiQzVxY0djfDc0MGVhZTNiNDU4YWNmMzE0MDUzMDBjNzU3OWQwMzM2MDc5MjQwODA2NDA5NTI3YWI2NmQwNmM2OTVjYjJmNzc"
+                     alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Sneaker Mezcla Texturas</h2>
+                  <p class="price">$365</p>
+                  <button @click="AgregarCarrito('Sneaker Mezcla Texturas', '365', '5')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="./INDEX_files/417501-gris-lateral.avif" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Sneaker Casual Flexi</h2>
+                  <p class="price">$350</p>
+                  <button @click="AgregarCarrito('Sneaker Casual Flexi', '350', '6')">Añadir al carrito</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="row-container">
+            <div class="item">
+               <figure>
+                  <img src="./INDEX_files/705403-arena-lateral.avif" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Calzado Sport Quirelli Arena</h2>
+                  <p class="price">$339</p>
+                  <button @click="AgregarCarrito('Calzado Sport Quirelli Arena', '339', '7')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="./INDEX_files/404604-shedron-lateral.avif" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Botin Chelsea Shedron</h2>
+                  <p class="price">$600</p>
+                  <button @click="AgregarCarrito('Botin Chelsea Shedron', '500', '8')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="./INDEX_files/CP-SAMSUNG-SM-S711BZPMLTM-2f9193.jpg" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Sneaker Flexi Atómica<h2>
+                        <p class="price">$457</p>
+                        <button @click="AgregarCarrito('Sneaker Flexi Atómica', '457', '9')">Añadir al carrito</button>
+               </div>
+            </div>
+         </div>
+
+
+         <div class="row-container">
+            <div class="item">
+               <figure>
+                  <img src="./INDEX_files/701417-tan-lateral.avif" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Sandalia Quirelli Acoiinada</h2>
+                  <p class="price">$139</p>
+                  <button @click="AgregarCarrito('Sandalia Quirelli Acoiinada', '139', '10')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/814863051c82715e7a07e8ad69a22ab3-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Sandalias Adidas Unisex Aqua</h2>
+                  <p class="price">$160</p>
+                  <button @click="AgregarCarrito('Sandalias Adidas Unisex Aqua', '160', '11')">Añadir al
+                     carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/359ecdd8284be7df2185834072ff9e4c-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Bota para Invierno DAMA</h2>
+                  <p class="price">$600</p>
+                  <button @click="AgregarCarrito('Bota para Invierno DAMA', '600', '12')">Añadir al carrito</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="row-container">
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/9822192956737a3c1241f9b002da1290-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Tenis Puma Dama Interflex</h2>
+                  <p class="price">$429</p>
+                  <button @click="AgregarCarrito('Tenis Puma Dama Interflex', '429', '13')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/a32369f572f7768aa108a8db234ac967-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Bota Caballero Discobery</h2>
+                  <p class="price">$600</p>
+                  <button @click="AgregarCarrito('Bota Caballero Discobery', '600', '14')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/23ffe0f5758ef88aa069311620314220-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Bota Caballero Via Urbana</h2>
+                  <p class="price">$450</p>
+                  <button @click="AgregarCarrito('Bota Caballero Via Urbana', '450', '15')">Añadir al carrito</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="row-container">
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/f2863ff6c04c0adbc91f8be79cea904a-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Botines Dama Simipiel</h2>
+                  <p class="price">$460</p>
+                  <button @click="AgregarCarrito('Botines Dama Simipiel', '460', '16')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/b66d918a7e04f31d4fcbf64e00c8d3b8-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Tenis Dama Kswiss</h2>
+                  <p class="price">$650</p>
+                  <button @click="AgregarCarrito('Tenis Dama Kswiss', '360', '17')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/e93547e8f247ddec906c98f1711517eb-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Tenis Rosas Kswiss Saory</h2>
+                  <p class="price">$350</p>
+                  <button @click="AgregarCarrito('Tenis Rosas Kswiss Saory', '350', '18')">Añadir al carrito</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="row-container">
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/d1ccc64e881eaf6ba679933f8f6e1c4b-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Bota Dama Suede Negro</h2>
+                  <p class="price">$420</p>
+                  <button @click="AgregarCarrito('Bota Dama Suede Negro', '420', '19')">Añadir al carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/fb577b5c5610de1bc22ff7f149c7a68c-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Sandalia Fiesta Semipiel Plata</h2>
+                  <p class="price">$400</p>
+                  <button @click="AgregarCarrito('Sandalia Fiesta Semipiel Plata', '400', '20')">Añadir al
+                     carrito</button>
+               </div>
+            </div>
+
+
+            <div class="item">
+               <figure>
+                  <img src="https://i.linio.com/p/21ae10b6dd1b96a67f4df427a037cbea-product.webp" alt="producto">
+
+               </figure>
+               <div class="info-product">
+                  <h2>Tenis Plataforma Mujer Blanco</h2>
+                  <p class="price">$340</p>
+                  <button @click="AgregarCarrito('Tenis Plataforma Mujer Blanco', '340', '21')">Añadir al
+                     carrito</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <footer>
+      <p>&copy; 2024 Mike's Shoe Haven. Todos los derechos reservados.</p>
+   </footer>
+
+   <script src="index.js"></script>
+</body>
+
+</html>
