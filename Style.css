@@ -164,7 +164,9 @@ header{
 .item{
     border-radius: 10px;
     width: 280px;
+
 }
+
 
 .item:hover{
     box-shadow: 0 10px 20px rgba(255, 254, 254, 0.7);
